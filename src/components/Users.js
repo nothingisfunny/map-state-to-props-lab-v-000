@@ -1,19 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-export class Users extends Component {
-
+class Users extends Component {
   render() {
-
+    const users = this.props.users.map(user => {
+      return <li>{user.userName}</li>
+    })
+    console.log(users)
     return (
       <div>
         <ul>
-          {/* stuff should happen around here */}
+          {users}
         </ul>
       </div>
     )
   }
 }
 
-export const ConnectedUsers = Users // aren't we supposed to be connecting something around here?
+ // aren't we supposed to be connecting something around here?
+
+const mapStateToProps = (state) => {
+  return {users: state.users}
+}
+
+export default connect(mapStateToProps)(Users)
 
