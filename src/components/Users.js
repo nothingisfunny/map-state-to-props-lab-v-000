@@ -6,7 +6,6 @@ class Users extends Component {
     const users = this.props.users.map(user => {
       return <li>{user.userName}</li>
     })
-    console.log(users)
     return (
       <div>
         <ul>
@@ -20,8 +19,11 @@ class Users extends Component {
  // aren't we supposed to be connecting something around here?
 
 const mapStateToProps = (state) => {
-  return {users: state.users}
+  return {
+    users: state.users,
+    primaryUser: state.users[0]
+  }
 }
 
-export default connect(mapStateToProps)(Users)
+export const ConnectedUsers = connect(mapStateToProps)(Users)
 
